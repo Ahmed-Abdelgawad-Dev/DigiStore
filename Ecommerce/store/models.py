@@ -14,16 +14,24 @@ class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True,
-                              default='/static/img/placeholder.png')
-    
-    def __str__(self):
-        return self.name
+    image = models.ImageField(null=True, blank=True)
     
     @property
     def image_url(self):
         if self.image and hasattr(self.image, 'url'):
             return self.image.url
+
+    # @property
+    # def imageURL(self):
+    #     try:
+    #         url = self.image.url
+    #     except:
+    #         url = ''
+    #     return url
+    
+    def __str__(self):
+        return self.name
+    
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
