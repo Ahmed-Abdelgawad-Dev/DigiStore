@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Customer, Product, Order, OrderItem, ShppingAdress
+from django.http import JsonResponse
 
 
 def main(request):
@@ -37,3 +38,6 @@ def checkout(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0}
     context = {'items': items, 'order': order}
     return render(request, 'store/checkout.html', context)
+# from django.http import JsonResponse
+def updateItem(request):
+    return JsonResponse('data from views returned by JsonResponse', safe=False)
