@@ -2,7 +2,7 @@
 {% load static %}
 <html>
 <head>
-	<title>Ecom</title>
+	<title>Ecommerce</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 	<link rel="icon" href="data:,">
@@ -50,7 +50,7 @@
 	     	<a href="{% url 'cart' %}">
 	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
 	    	</a>
-	    	<p id="cart-total">0</p>
+	    	<p id="cart-total">{{cartItems}}</p>
 
 	    </div>
 	  </div>
