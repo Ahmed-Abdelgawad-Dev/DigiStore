@@ -94,7 +94,7 @@
 
 		function submitFormData() {
 			console.log('payment button clicked');
-			let total = '{{order.get_cart_total|floatformat:2}}'
+			let total = '{{order.get_cart_total}}'
 			let userFormData = {
 				'name': null,
 				'email': null,

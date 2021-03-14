@@ -76,7 +76,7 @@ class OrderItem(models.Model):
         total = self.product.price * self.quantity
         return total
 
-class ShppingAdress(models.Model):
+class ShippingAdress(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.CharField(max_length=200, null=True)
