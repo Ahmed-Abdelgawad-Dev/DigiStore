@@ -68,7 +68,7 @@
 		</div>
 	</div>
 <script type="text/javascript">
-	var shipping = '{{order.shipping}}';
+	let shipping = '{{order.shipping}}';
 	if( shipping == 'False') {
 		document.getElementById('shipping-info').innerHTML = '';
 	}
@@ -94,7 +94,41 @@
 
 		function submitFormData() {
 			console.log('payment button clicked');
-		}
+			let total = '{{order.get_cart_total|floatformat:2}}'
+			let userFormData = {
+				'name': null,
+				'email': null,
+				'total': total
+			}
+			let shippingInfo = {
+				'address':null,
+				'city':null,
+				'state':null,
+				'zipcode':null
+			};
+			if(shipping != 'False') {
+				shippingInfo.address = form.address.value
+				shippingInfo.city = form.city.value
+				shippingInfo.state = form.state.value
+				shippingInfo.zipcode = form.zipcode.value
+			}
+			if(user == 'AnonymousUser') {
+				userFormData.name = form.name.value
+				userFormData.email = form.email.value
+			}
+			let url = '/process_order/';
+			fetch(url,{
+				method: 'POST',
+				headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken},
+				body: JSON.stringify({'form': userFormData, 'shipping':shippingInfo})
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('success:', data);
+				alert('Transaction completed');
+				window.location.href = "{% url 'store' %}"
+			})
+		}	
 	})
 </script>
 {% endblock content %}

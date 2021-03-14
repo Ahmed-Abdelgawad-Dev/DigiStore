@@ -75,3 +75,7 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
     return JsonResponse('data from views returned by JsonResponse', safe=False)
+
+def processOrder(request):
+    print('data => ', request.body)
+    return JsonResponse('payment complete...', safe=False)
