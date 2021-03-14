@@ -5,6 +5,7 @@
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
 				<form id="form">
+					
 					<div id="user-info">
 						<div class="form-field">
 							<input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -63,12 +64,13 @@
 				</div>
 				{% endfor %}
 				<h5>Items:{{ order.get_cart_items }}</h5>
-				<h5>Total:${{ order.get_cart_total }}</h5>
+				<h5>Total:${{ order.get_cart_total|floatformat:2 }}</h5>
 			</div>
 		</div>
 	</div>
 <script type="text/javascript">
 	let shipping = '{{order.shipping}}';
+	let total = '{{order.get_cart_total}}'
 	if( shipping == 'False') {
 		document.getElementById('shipping-info').innerHTML = '';
 	}
