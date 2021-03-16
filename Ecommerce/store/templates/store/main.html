@@ -27,6 +27,24 @@
 		return cookieValue;	
 }
 	const csrftoken = getToken('csrftoken');
+
+	function getCookie(name) {
+		var cookieArr = document.cookie.split(";");
+		for(let i=0; i < cookieArr.length; i++) {
+			let cookiepair = cookieArr[i].split("=");
+			if(name == cookiepair[0].trim()) {
+				return decodeURIComponent(cookiepair[1]);
+			}
+		}
+		return null;
+	}
+	var cart = JSON.parse(getCookie('cart'));
+	if(cart == undefined){
+		cart = {};
+		console.log('cart was created!');
+		document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
+	}
+	console.log('cart=> ', cart)
 	</script>
 </head>
 <body>
