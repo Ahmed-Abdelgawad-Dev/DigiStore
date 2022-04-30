@@ -5,14 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% comment %}
     <script src="https://cdn.tailwindcss.com"></script>
-    {% endcomment %} {% tailwind_css %}
+    {% tailwind_css %}
     <title>Main Page</title>
   </head>
 
   <body>
-    {% comment %} {% block nav %} {% endblock %} {% endcomment %}
     <nav class="border-b border-gray-300">
       <div
         class="max-w-6xl max-auto py-2 px-6 xl:px-0 flex items-center justify-between"
@@ -62,56 +60,38 @@
         </div>
       </div>
     </nav>
-    <main>
-      {% comment %} {% block content %} {% endblock %} {% endcomment %}
-      <header class="bg-purple-500">
-        <div class="py-10 px-6 lg:py-20">
-          <div class="max-w-3xl mx-auto text-center">
-            <p class="text-white mb-2 text-3xl lg:text-5xl">
-              Welcome to Ecommercial
-            </p>
-            <p class="mb-10 text-white">We find many products here.</p>
-            <a
-              href=""
-              class="inline-block px-8 py-4 font-semibold rounded-2xl text-purple-500 bg-white hover:bg-gray-200"
-              >Shop Now</a
-            >
-          </div>
+    <main>{% block content %} {% endblock %}</main>
+    <footer class="bg-gray-100">
+      <div
+        class="max-w-6xl max-auto py-10 px-6 xl:px-0 md:flex justify-between"
+      >
+        <div class="footer-left mb-12 md:mb-0">
+          <h2 class="mb-5 text-lg">About us</h2>
+          <p class="text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit
+          </p>
         </div>
-      </header>
-      {% comment %} {% block footer %}{% endblock %} {% endcomment %}
-      <footer class="bg-gray-100">
-        <div
-          class="max-w-6xl max-auto py-10 px-6 xl:px-0 md:flex justify-between"
-        >
-          <div class="footer-left mb-12 md:mb-0">
-            <h2 class="mb-5 text-lg">About us</h2>
-            <p class="text-gray-700">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit
-            </p>
-          </div>
-          <div class="footer-right mb-12 md:mb-0">
-            <h2 class="mb-5 text-lg">Social Media Links</h2>
-            <ul class="space-y-2">
-              <li>
-                <a href="#" class="text-purple-500 hover:text-purple-800"
-                  >Facbook</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-purple-500 hover:text-purple-800"
-                  >Instagram</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-purple-500 hover:text-purple-800"
-                  >Twitter</a
-                >
-              </li>
-            </ul>
-          </div>
+        <div class="footer-right mb-12 md:mb-0">
+          <h2 class="mb-5 text-lg">Social Media Links</h2>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-purple-500 hover:text-purple-800"
+                >Facbook</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-purple-500 hover:text-purple-800"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-purple-500 hover:text-purple-800"
+                >Twitter</a
+              >
+            </li>
+          </ul>
         </div>
-      </footer>
-    </main>
+      </div>
+    </footer>
   </body>
 </html>
