@@ -1,2 +1,3 @@
-# Ecommerce-Django
-E-commerce_with_django
+# Ecommerce Website with Django, HTMX & Tailwindcss
+
+REST OF README TBA
