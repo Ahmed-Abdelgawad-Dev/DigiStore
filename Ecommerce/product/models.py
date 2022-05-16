@@ -27,5 +27,8 @@ class Product(models.Model):
     class Meta:
         ordering = ('-created_at',)
 
+    def get_product_price(self):
+        return self.price / 100
+
     def __str__(self):
         return self.name

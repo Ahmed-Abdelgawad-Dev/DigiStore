@@ -2,13 +2,18 @@
 
 <div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
     <div class="images w-full mb-6 lg:mb-0 lg:w-3/5">
-        <img src="https://www.amazon.eg/-/en/s?bbn=18018103031&rh=n%3A18018102031%2Cn%3A21832872031&dc=&qid=1650501957&rnid=18018103031&ref=dlx_21832_sh_dcl_img_0_a94310f0_dt_mese4_d4" alt="" class="rounded-xl">
+        <img src="https://www.amazon.eg/-/en/s?bbn=18018103031&rh=n%3A18018102031%2Cn%3A21832872031&dc=&qid=1650501957&rnid=18018103031&ref=dlx_21832_sh_dcl_img_0_a94310f0_dt_mese4_d4" alt="" class="rounded-xl" />
     </div>
     <div class="information w-full lg:w-2/5 lg-p-6">
-        <h1 class="text-2xl">Product Name</h1>
-        <p class="mt-1 text-gray-400">$999.99</p>
-        <p class="mt-6 text-gray-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, aperiam!
-        </p>
+        <h1 class="text-2xl">{{product.name}}</h1>
+        <p class="mt-1 text-gray-400">${{product.price}}</p>
+        {% if product.description %}
+
+        <p class="mt-6 text-gray-700">{{product.description}}</p>
+        {% else %}
+        <p class="mt-6 text-gray-700">This product has no description</p>
+        {% endif %}
+
         <a href="" class="mt-6 inline-block px-8 py-4 rounded-xl bg-purple-500 text-white hover:bg-purple-700">Add to
             cart</a>
     </div>

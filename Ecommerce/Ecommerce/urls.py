@@ -23,5 +23,5 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('', main, name='main'),
     path('shop/', shop, name='shop'),
-    path('product/', product, name='product'),
+    path('shop/<slug:slug>/', product, name='product'),
 ]
