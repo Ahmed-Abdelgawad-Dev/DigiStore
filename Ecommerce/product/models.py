@@ -23,6 +23,8 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at',)
