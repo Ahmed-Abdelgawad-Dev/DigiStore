@@ -28,7 +28,11 @@
           >
           <ul class="flex items center space-x-4">
             <li><a href="{% url 'shop' %}">Shop</a></li>
-            <li><a href="#">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
           </ul>
         </div>
         <div class="menu-right flex space-x-4 items-center">
