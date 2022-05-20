@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from product.models import Product, Category
 from django.db.models import Q
+from .forms import SignUpForm
+from django.contrib.auth import login
 
 
 def main(request):
@@ -28,8 +30,18 @@ def shop(request):
 
 
 def signup(request):
-    return render(request, 'core/signup.html')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            print(form)
+            return redirect('/')
+    else:
+        form = SignUpForm()
+
+    return render(request, 'core/signup.html', {'form': form})
 
 
-def login(request):
+def login2(request):
     return render(request, 'core/login.html')

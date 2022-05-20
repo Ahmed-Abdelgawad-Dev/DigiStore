@@ -1,26 +1,53 @@
 {% extends 'core/base.html' %} {% block content %}
 <div class="max-w-lg mx-auto flex flex-wrap p-6">
-    <div class="bg-gray-100 mx-auto rounded-xl p-6">
-        <h1 class="text-2xl mb-6">Sign up</h1>
-        <form action="." method="post" class="space-y-3">
+    <div class="w-full bg-gray-100 p-6 rounded-xl">
+        <h1 class="mb-6 text-2xl">Sign up</h1>
+
+        <form method="post" action="." class="space-y-3">
             {% csrf_token %}
+
+            <div>
+                <label>Username</label>
+                <input type="text" name="username" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+            </div>
+
+            <div>
+                <label>First name</label>
+                <input type="text" name="first_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+            </div>
+
+            <div>
+                <label>Last name</label>
+                <input type="text" name="last_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+            </div>
+
             <div>
                 <label>E-mail</label>
-                <input class="w-full bg-white  px-6 py-4 rounded-lg" type="email">
+                <input type="email" name="email" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
             </div>
+
             <div>
                 <label>Password</label>
-                <input class="w-full bg-white px-6 py-4 rounded-lg" type="password">
+                <input type="password" name="password1" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
             </div>
+
             <div>
-                <label>Password again</label>
-                <input class="w-full bg-white px-6 py-4 rounded-lg" type="password">
+                <label>Repeat password</label>
+                <input type="password" name="password2" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
             </div>
-            <div class=" text-red-900 semibold animate-bounce">
-                <p>There is an error</p>
+
+            {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+            <div class="p-6 text-red-900 rounded-xl">
+                <p>{{ error|escape }}</p>
             </div>
+            {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+            <div class="p-6 text-red-800 rounded-xl">
+                <p>{{ error|escape }}</p>
+            </div>
+            {% endfor %} {% endif %}
+
             <div>
-                <button type="submit" class="rounded-xl  py-4 px-6 text-white font-semibold bg-purple-500 hover:bg-purple-700">Submit</button>
+                <button class="py-4 px-6 rounded-xl text-white bg-purple-500 hover:bg-purple-700">Submit</button>
             </div>
         </form>
     </div>
