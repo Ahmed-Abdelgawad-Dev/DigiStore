@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from cart.views import add_to_cart
+from cart.views import add_to_cart, cart
 from core.views import main, shop, signup, login2
 from product.views import product
 
@@ -36,6 +36,6 @@ urlpatterns = [
     path('shop/<slug:slug>/', product, name='product'),
     path('signup/', signup, name='signup'),
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
-
+    path('cart/', cart, name='cart')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
