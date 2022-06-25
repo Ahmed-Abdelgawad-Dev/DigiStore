@@ -6,6 +6,8 @@
         <strong>Name: </strong>{{request.user.get_full_name}} <br>
         <strong>User name: </strong>{{request.user.username}} <br>
         <strong>Email: </strong>{{request.user.email}} <br>
+        <a href="{% url 'edit_user_account' %}"
+            class="inline-block mt-4 py-4 px-6 rounded-xl text-white bg-purple-500">Edit</a>
     </div>
     <hr>
     <h2 class="my-6 text-xl">My orders</h2>

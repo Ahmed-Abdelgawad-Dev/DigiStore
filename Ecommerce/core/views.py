@@ -47,3 +47,21 @@ def signup(request):
 @login_required
 def user_account(request):
     return render(request, 'core/user_account.html')
+
+
+@login_required
+def edit_user_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.email = request.POST.get('email')
+        user.username = request.POST.get('username')
+        print('USER====================>>>>>>>>>>>>>>', user.first_name)
+        print('USER====================>>>>>>>>>>>>>>', user.last_name)
+        print('USER====================>>>>>>>>>>>>>>', user.username)
+        print('USER====================>>>>>>>>>>>>>>', user.email)
+        user.save()
+
+        return redirect('user_account')
+    return render(request, 'core/edit_user_account.html')
