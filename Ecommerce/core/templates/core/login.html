@@ -1,4 +1,6 @@
 {% extends 'core/base.html' %} {% block content %}
+{% block title %}
+{% endblock  %}
 <div class="max-w-lg mx-auto flex flex-wrap p-6">
     <div class="bg-gray-100 mx-auto rounded-xl p-6">
         <h1 class="text-2xl mb-6">Login</h1>
@@ -23,7 +25,8 @@
             </div>
             {% endfor %} {% endif %}
             <div>
-                <button type="submit" class="rounded-xl py-4 px-6 text-white font-semibold bg-purple-500 hover:bg-purple-700">
+                <button type="submit"
+                    class="rounded-xl py-4 px-6 text-white font-semibold bg-purple-500 hover:bg-purple-700">
                     Submit
                 </button>
             </div>

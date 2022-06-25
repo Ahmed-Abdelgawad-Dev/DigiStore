@@ -1,4 +1,6 @@
 {% extends 'core/base.html' %} {% block content %}
+{% block title %}
+{% endblock  %}
 <div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
     <div class="filters w-full lg:w-1/4">
         <form method="get" action=".">
@@ -16,13 +18,15 @@
         <h3 class="mt-6 mb-3 text-xl uppercase">categories</h3>
         <ul class="space-y-2">
             <li>
-                <a href="{% url 'shop' %}" class="{% if not active_category %}text-purple-500 {% else %}text-gray-500{% endif %}">All
+                <a href="{% url 'shop' %}"
+                    class="{% if not active_category %}text-purple-500 {% else %}text-gray-500{% endif %}">All
                     Categories</a>
             </li>
 
             {% for category in categories %}
             <li>
-                <a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-purple-500 {% else %}text-gray-500{% endif %}">{{category.name}}</a>
+                <a href="{% url 'shop' %}?category={{ category.slug }}"
+                    class="{% if category.slug == active_category %}text-purple-500 {% else %}text-gray-500{% endif %}">{{category.name}}</a>
             </li>
             {% endfor %}
         </ul>
