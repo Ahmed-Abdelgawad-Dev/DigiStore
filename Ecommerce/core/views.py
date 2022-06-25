@@ -3,6 +3,7 @@ from product.models import Product, Category
 from django.db.models import Q
 from .forms import SignUpForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 
 def main(request):
@@ -43,5 +44,6 @@ def signup(request):
     return render(request, 'core/signup.html', {'form': form})
 
 
-def login2(request):
-    return render(request, 'core/login.html')
+@login_required
+def user_account(request):
+    return render(request, 'core/user_account.html')

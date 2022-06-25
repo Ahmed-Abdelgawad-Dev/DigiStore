@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="max-w-6xl max-auto p-6">
+    <div class="mb-5 text-3xl">My Account</div>
+    <div class="mb-6">
+        <strong>Name: </strong>{{request.user.get_full_name}} <br>
+        <strong>User name: </strong>{{request.user.username}} <br>
+        <strong>Email: </strong>{{request.user.email}} <br>
+    </div>
+    <hr>
+    <h2 class="my-6 text-xl">My orders</h2>
+    <div class="my-6 p-6 flex flex-wrap bg-gray-100 rounded-xl">
+        <div class="mb-6 flex justify-between">
+            <a href="#">order: 1</a>
+        </div>
+        <div class="mb-6 w-full">
+            <div class="product mb-6 flex pr-6">
+                <a href="#" class="w-1/4">
+                    <img class="hover:shadow-lg rounded-xl" src="" alt="pic one demo">
+                </a>
+                <div class="w-3/4 pl-6">
+                    <div class="flex justify-between">
+                        <a href="#" class="text-lg">product name</a>
+                        <p class="mb-6 pt-1 text-gray-400">$99.9</p>
+                    </div>
+                    <hr>
+                    <div class="mt-6">Quantity: 1</div>
+                </div>
+            </div>
+            <div class="product mb-6 flex pr-6">
+                <a href="#" class="w-1/4">
+                    <img class="hover:shadow-lg rounded-xl" src="" alt="pic one demo">
+                </a>
+                <!--! Repeated, will be deleted later -->
+                <div class="w-3/4 pl-6">
+                    <div class="flex justify-between">
+                        <a href="#" class="text-lg">product name</a>
+                        <p class="mb-6 pt-1 text-gray-400">$99.9</p>
+                    </div>
+                    <hr>
+                    <div class="mt-6">Quantity: 1</div>
+                </div>
+            </div>
+            <!--! Repeated , will be deleted later-->
+            <div class="product mb-6 flex pr-6">
+                <a href="#" class="w-1/4">
+                    <img class="hover:shadow-lg rounded-xl" src="" alt="pic one demo">
+                </a>
+                <div class="w-3/4 pl-6">
+                    <div class="flex justify-between">
+                        <a href="#" class="text-lg">product name</a>
+                        <p class="mb-6 pt-1 text-gray-400">$99.9</p>
+                    </div>
+                    <hr>
+                    <div class="mt-6">Quantity: 1</div>
+                </div>
+            </div>
+        </div>
+        <div class="text-lg">
+            <p>Date: 22-6-2022</p>
+            <p>total price: $123e.99</p>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
