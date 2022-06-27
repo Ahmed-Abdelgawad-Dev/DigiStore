@@ -11,58 +11,34 @@
     </div>
     <hr>
     <h2 class="my-6 text-xl">My orders</h2>
+    {% for order in request.user.orders.all %}
     <div class="my-6 p-6 flex flex-wrap bg-gray-100 rounded-xl">
         <div class="mb-6 flex justify-between">
-            <a href="#">order: 1</a>
+            <a href="#">order: {{order.id}}</a>
         </div>
+        {% for item in order.items.all %}
         <div class="mb-6 w-full">
             <div class="product mb-6 flex pr-6">
                 <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="" alt="pic one demo">
+                    <img class="hover:shadow-lg rounded-xl" src="{{item.product.get_thumbnail}}" alt="pic one demo">
                 </a>
                 <div class="w-3/4 pl-6">
                     <div class="flex justify-between">
-                        <a href="#" class="text-lg">product name</a>
+                        <a href="#" class="text-lg">{{item.product.name}}</a>
                         <p class="mb-6 pt-1 text-gray-400">$99.9</p>
                     </div>
                     <hr>
-                    <div class="mt-6">Quantity: 1</div>
-                </div>
-            </div>
-            <div class="product mb-6 flex pr-6">
-                <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="" alt="pic one demo">
-                </a>
-                <!--! Repeated, will be deleted later -->
-                <div class="w-3/4 pl-6">
-                    <div class="flex justify-between">
-                        <a href="#" class="text-lg">product name</a>
-                        <p class="mb-6 pt-1 text-gray-400">$99.9</p>
-                    </div>
-                    <hr>
-                    <div class="mt-6">Quantity: 1</div>
-                </div>
-            </div>
-            <!--! Repeated , will be deleted later-->
-            <div class="product mb-6 flex pr-6">
-                <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="" alt="pic one demo">
-                </a>
-                <div class="w-3/4 pl-6">
-                    <div class="flex justify-between">
-                        <a href="#" class="text-lg">product name</a>
-                        <p class="mb-6 pt-1 text-gray-400">$99.9</p>
-                    </div>
-                    <hr>
-                    <div class="mt-6">Quantity: 1</div>
+                    <div class="mt-6">{{item.quantity}}</div>
                 </div>
             </div>
         </div>
+        {% endfor %}
         <div class="text-lg">
-            <p>Date: 22-6-2022</p>
-            <p>total price: $123e.99</p>
+            <p>Date: {{order.created_at}}</p>
+            <p>total price: $123.99</p>
         </div>
     </div>
+    {% endfor %}
 </div>
 
 {% endblock  %}
