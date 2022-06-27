@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def main(request):
-    products = Product.objects.all()[0:6]
+    products = Product.objects.all()
     context = {'products': products}
     return render(request, 'core/frontpage.html', context)
 

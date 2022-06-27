@@ -34,10 +34,10 @@ class Cart(object):
         product_id = str(product_id)
         # Put product_id inside the cart
         if product_id not in self.cart:
-            self.cart[product_id] = {'id': product_id, 'quantity': 1}
+            self.cart[product_id] = {'quantity': 1, 'id': product_id}
         # Updating quantity
         if update_quantity:
-            self.cart[product_id] += int(quantity)
+            self.cart[product_id]['quantity'] += int(quantity)
             # Remove the product_id if its value is 0
             if self.cart[product_id]['quantity'] == 0:
                 self.remove(product_id)
@@ -48,9 +48,16 @@ class Cart(object):
             self.cart[str(prod)]['product'] = Product.objects.get(pk=prod)
         total = sum(item['product'].price * item['quantity']
                     for item in self.cart.values())
-        return total
+        return int(total)
 
     def remove(self, product_id):
         if product_id in self.cart:
             del self.cart[product_id]
             self.save
+
+    def get_item(self, product_id):
+        # return self.cart[str(product_id)]
+        if product_id in self.cart:
+            return self.cart[str(product_id)]
+        else:
+            return None
