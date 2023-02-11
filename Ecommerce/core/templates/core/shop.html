@@ -1,12 +1,12 @@
 {% extends 'core/base.html' %} {% block content %}
 {% block title %}
-{% endblock  %}
-<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+{% endblock %}
+<div class="max-w-6xl mx-auto flex flex-col items-start py-6 px-6 xl:px-0">
     <div class="filters w-full lg:w-1/4">
         <form method="get" action=".">
             <div class="flex">
                 <input type="text" name="query" class="p-4 bg-gray-100 border-0" placeholder="Search..." />
-                <button class="p-4 bg-gray-100 border-0">
+                <button class="p-4 border-0 bg-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -15,18 +15,18 @@
                 </button>
             </div>
         </form>
-        <h3 class="mt-6 mb-3 text-xl uppercase">categories</h3>
+        <h3 class="mt-6 mb-3 text-xl uppercase"></h3>
         <ul class="space-y-2">
             <li>
                 <a href="{% url 'shop' %}"
-                    class="{% if not active_category %}text-purple-500 {% else %}text-gray-500{% endif %}">All
+                    class="{% if not active_category %}text-gray-900 {% else %}text-gray-500{% endif %}">All
                     Categories</a>
             </li>
 
             {% for category in categories %}
             <li>
                 <a href="{% url 'shop' %}?category={{ category.slug }}"
-                    class="{% if category.slug == active_category %}text-purple-500 {% else %}text-gray-500{% endif %}">{{category.name}}</a>
+                    class="{% if category.slug == active_category %}text-gray-900 {% else %}text-gray-500{% endif %}">{{category.name}}</a>
             </li>
             {% endfor %}
         </ul>
