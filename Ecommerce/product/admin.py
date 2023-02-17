@@ -3,4 +3,7 @@ from .models import Category, Product
 
 
 admin.site.register(Category)
-admin.site.register(Product)
+
+class CustomAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+admin.site.register(Product, CustomAdmin)
