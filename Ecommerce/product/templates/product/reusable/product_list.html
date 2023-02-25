@@ -1,19 +1,26 @@
-<div class="flex-row flex-wrap gap-10 mt-10 flex items-center">
+<div class="flex-row flex-wrap mt-10 flex items-center">
   <div
-    class="flex items-center flex-row flex-wrap content-between p-3 m-4 mt-5 mx-auto bg-white border border-gray-200 box-border rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 max-w-sm overflow-hidden">
+    class="flex items-center flex-row flex-wrap content-between p-3 m-4 mt-5 mx-auto bg-white border border-gray-200 box-border rounded-lg shadow max-w-sm overflow-hidden">
     <a href="{% url 'product' product.slug %}" class="basis-1/2 pr-4 mx-auto">
       <img class=" object-cover" src="{{ product.get_thumbnail }}" alt="product item" />
     </a>
     <div class="basis-1/2">
       <a href="{% url 'product' product.slug %}">
-        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ product.name}}</h5>
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-black-500">{{ product.name|title}}</h5>
       </a>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ product.description|truncatewords:20}}</p>
-      <a href="{% url 'product' product.slug %}" hx-get="{% url 'add_to_cart' product.id %}" hx-target="#menu-cart-button"
-        hx-swap="outerHTML"
-        class="block items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-        Add to cart
-      </a>
+      <p class="mb-3 font-normal text-blue-500">{{ product.description|truncatewords:20}}</p>
+      <p class="mb-3 font-normal text-gray-500">{{ product.category|title}}</p>
+              <p class="mb-3 font-normal text-blue-500"> <span class="text-black
+                              ">USD </span><span class="font-semibold text-black text-xl">{{ product.price}}</span></p>
+      <div class="space-x-4 pb-2">
+
+        <a href="{% url 'product' product.slug %}" hx-get="{% url 'add_to_cart' product.id %}"
+          hx-target="#menu-cart-button" hx-swap="outerHTML"
+          class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center mr-2 mb-2 ">
+          Add to cart
+        </a>
+
+      </div>
     </div>
   </div>
 </div>
